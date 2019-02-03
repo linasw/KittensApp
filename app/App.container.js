@@ -10,6 +10,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import Router from './routes/index';
+import HomePage from './pages/HomeList.page';
 import { createAppContainer} from "react-navigation";
 
 const instructions = Platform.select({
