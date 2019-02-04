@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import { View, Text, Button, FlatList } from 'react-native';
 import {StackActions, NavigationActions} from 'react-navigation';
+import {connect} from 'react-redux';
+import {getKittens} from '../redux/actions/kitten.action';
 import Home from '../components/HomeList/Home.component';
 
 class HomePage extends Component {
     render() {
+        const {kittens, getKittens} = this.props;
         return (
             // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             //     <Text>Home screen.</Text>
@@ -18,9 +21,13 @@ class HomePage extends Component {
             //         }}
             //     />                
             // </View>
-            <Home />
+            <Home kittens={kittens} getKittens={getKittens} />
         );
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+    kittens: state.kittens.data,
+});
+
+export default connect(mapStateToProps, {getKittens})(HomePage);
